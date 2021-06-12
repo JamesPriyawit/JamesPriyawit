@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="int" value="int" dbms="mysql, postgresql"/>
+    <property name="numeric" value="numeric" dbms="mysql, postgresql"/>
+    <property name="double" value="double" dbms="mysql,postgresql"/>
+    <property name="boolean" value="tinyint(1)" dbms="mysql"/>
+    <property name="boolean" value="boolean" dbms="postgresql"/>
+    <property name="varchar.small" value="varchar(120)" dbms="mysql, postgresql"/>
+    <property name="varchar.medium" value="varchar(255)" dbms="mysql, postgresql"/>
+    <property name="varchar.large" value="varchar(1000)" dbms="mysql, postgresql"/>
+    <property name="varchar.very_large" value="varchar(4000)" dbms="mysql, postgresql"/>
+    <property name="text" value="text" dbms="mysql, postgresql"/>
+    <property name="timestamp" value="timestamp" dbms="mysql, postgresql"/>
+    <property name="date" value="date" dbms="mysql, postgresql"/>
+    <property name="decimal" value="decimal" dbms="mysql, postgresql"/>
+    <property name="date.now" value="now()" dbms="mysql, postgresql"/>
+
+    <changeSet id="1" author="users">
+        <comment>
+            Create Table User, Role, UserRole, Authority, RoleAuthority,insert user admin
+        </comment>
+        <createTable tableName="users">
+            <column name="id" type="${int}" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstname" type="${varchar.medium}">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lastname" type="${varchar.medium}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="${int}">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
